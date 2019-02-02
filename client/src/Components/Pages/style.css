@@ -1,0 +1,124 @@
+
+.widthBox{
+    width: 500px;
+}
+
+.infoBox{
+    color:white;
+    font-weight: 500;
+    font-size:2vh;
+
+}
+
+.statusLogo{
+    max-width: 26px;
+    margin:auto;
+    top:50%
+}
+
+.descriptionRow{
+    margin-top:40px;
+    font-size: 18px;
+    position: relative;
+    background-color: #41abe1;
+    color: #fff;
+    height:auto;
+    min-height:0;
+}
+.all{
+    margin-top:190px
+}
+
+.circle1{
+    position: relative;
+    top: 195px;
+    left: 25px;
+    width: 250px;
+    height: 250px;
+    display: block;
+    -moz-border-radius: 125px;
+    -webkit-border-radius: 125px;
+    border-radius: 125px;
+    font-size: 150px;
+    color: #fff;
+    font-family: Helvetica,Sans-Serif;
+    font-weight: bold;
+    line-height: 250px;
+    text-align: center;
+
+}
+
+
+.servicebanner{
+    font-weight: 700;
+    font-size: 44px;
+    margin-top:80px;
+}
+
+
+.h1Style{
+    font-weight: 700;
+    font-size: 44px;
+    width: 100%
+}
+
+.titleStripe {
+    position: relative;
+    background-color: #FFF;
+}
+
+.top-buffer {
+    margin-top: 230px;
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.view p {
+    font-size: 28px;
+    margin-top: 5px;
+    margin-bottom: 25px;
+    font-weight: 300;
+}
+p {
+    margin: 0 0 10px;
+}
+
+.statusImg{
+    max-width: 100px;
+    margin:auto;
+    top:50%
+}
+
+@media (min-width: 768px){
+.col-sm-5 {
+    width: 41.66666667%;
+}
+
+}
+
+
+@media (min-width: 768px){
+.col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9 {
+    float: left;    
+}
+
+
+}
+
+
+@media (min-width: 768px)
+{.col-sm-7 {
+    width: 58.33333333%;
+}
+
+}
+
+@media (min-width: 768px){
+.col-sm-12 {
+    width: 100%;
+
+}
+
+}

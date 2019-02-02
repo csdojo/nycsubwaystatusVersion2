@@ -1,0 +1,39 @@
+{
+  "name": "nycsubwaystatusversion2",
+  "version": "1.0.0",
+  "description": "new york subway app version2",
+  "main": "server.js",
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "seed": "node scripts/seedDB.js",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.18.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csdojo/nycsubwaystatusVersion2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/csdojo/nycsubwaystatusVersion2/issues"
+  },
+  "homepage": "https://github.com/csdojo/nycsubwaystatusVersion2#readme",
+  "dependencies": {
+    "connect": "^3.6.6",
+    "express": "^4.16.4",
+    "gtfs-realtime-bindings": "0.0.4",
+    "if-env": "^1.0.4",
+    "mongoose": "^5.4.8",
+    "path": "^0.12.7",
+    "request": "^2.88.0"
+  }
+}

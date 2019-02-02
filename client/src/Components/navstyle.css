@@ -1,0 +1,162 @@
+.nav-pills {
+    position: fixed;
+    left: 0;
+    min-height: 65px;
+    width: 100%;
+    text-align: center;
+    -webkit-box-shadow: 0 14px 28px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.22);
+    box-shadow: 0 14px 28px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.22);
+    font-size: 1.2em;
+    font-weight: 500;
+    white-space: nowrap;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    background-image: linear-gradient(to right,    #636265c4 , #ffffffe0);
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.navbar-brand{
+    margin-right:70%
+}
+
+
+  .logo{
+      max-height: 30px;
+      margin-right:140px
+ 
+  }
+
+  .nav-link{
+      color:black;
+      border-radius: 50%;
+  }
+
+  .nav-pills .nav-link.active{
+     border-radius: 50%;
+     background: #647c97
+  }
+
+  .active{
+     border-radius: 50%
+  }
+
+ .train1,
+ .train4,
+ .train7,
+ .trainA,
+ .trainB,
+ .trainG,
+ .trainJ,
+ .trainL,
+ .trainN,
+ .trainS,
+ .trainSIR{
+      background-color: whitesmoke;
+      margin-right:3px;
+      margin-top:5px;
+      border-top-left-radius: 21px;
+      border-top-right-radius: 21px;
+      border-bottom-right-radius: 21px;
+      border-bottom-left-radius: 21px;
+      width: 42px;
+      height: 42px;
+      font-size:18px;
+      font-weight:700
+ 
+  }
+
+  
+
+  .train1 :hover{
+     text-decoration: none; 
+     color:whitesmoke;
+     background-color:red;
+     border-radius: 50%; 
+   
+
+  }
+
+  .train4 :hover{
+    text-decoration: none; 
+    color:whitesmoke;
+    background-color:#20a54d;
+    border-radius: 50%; 
+ }
+
+ .train7 :hover{
+    text-decoration: none; 
+    color:whitesmoke;
+    background-color:#ba34ad;
+    border-radius: 50%; 
+ }
+
+ .trainA :hover{
+    text-decoration: none; 
+    color:whitesmoke;
+    background-color:#2850ba;
+    border-radius: 50%; 
+ }
+
+ .trainB :hover{
+    text-decoration: none; 
+    color:whitesmoke;
+    background-color:#ff6602;
+    border-radius: 50%; 
+ }
+
+ .trainG :hover{
+    text-decoration: none; 
+    color:whitesmoke;
+    background-color:#7fd353;
+    border-radius: 50%; 
+ }
+
+ .trainJ :hover{
+    text-decoration: none; 
+    color:whitesmoke;
+    background-color:#b19264;
+    border-radius: 50%; 
+ }
+
+ .trainL :hover{
+    text-decoration: none; 
+    color:whitesmoke;
+    background-color:#868789;
+    border-radius: 50%; 
+ }
+ .trainN :hover{
+    text-decoration: none; 
+    color:whitesmoke;
+    background-color:#fecb00;
+    border-radius: 50%; 
+ }
+
+ .trainS :hover{
+    text-decoration: none; 
+    color:whitesmoke;
+    background-color:#808183;
+    border-radius: 50%; 
+ }
+
+ .trainSIR :hover{
+    text-decoration: none; 
+    color:whitesmoke;
+    background-color:#333399;
+    border-radius: 50%; 
+
+ }
+
+ .allTrains{
+    margin-bottom: 4px
+ }
+
+
+ .isTrain{
+   font-weight: 700;
+   font-size: 44px;
+ }
+
+ 
