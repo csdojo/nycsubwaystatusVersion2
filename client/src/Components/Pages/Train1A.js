@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./style.css";
+import "./descriptionstyle.css";
 
 const Train1A = (props) => {
 
@@ -97,3 +97,5 @@ const Train1A = (props) => {
 
 
 export default Train1A;
+
+

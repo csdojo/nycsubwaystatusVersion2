@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import Train1A from "./Train1A";
 import xml2js from 'xml2js';
 import API from "../../Utils/API";
-import "./style.css";
 import Station from "./Station";
+import "./style.css";
 
 var parseString = xml2js.parseString;
 
-class Train extends Component {
+
+class TrainNQRW extends Component {
 
     constructor(props) {
         super(props);
@@ -28,7 +29,7 @@ class Train extends Component {
             station: [],
             uniqStation: [],
             stopFile: "",
-            finalName:[]
+            finalName: []
         };
         this.train1Status = this.train1Status.bind(this);
 
@@ -39,13 +40,11 @@ class Train extends Component {
         var lineName = url[url.length - 1];
         this.setState({ lineName: lineName });
         this.train1Status();
-        this.getStationData();
-       
-
+        this.getStationData()
     }
 
     getStationData = () => {
-        API.getStationData()
+        API.getStationDataNQRW()
             .then((data) => {
                 console.log(data.data);
                 this.setState({
@@ -56,47 +55,7 @@ class Train extends Component {
             })
     }
 
-    getStopfile = () => {
-        API.getStopfile()
-            .then((data) => {
-
-                data = data.data;
-                console.log(data)
-
-                this.setState({
-                    stopFile: data
-                })
-
-                var hello = this.state.uniqStation.map(station => {
-                    var stop = station;
-
-                    var reg = new RegExp(stop + ",,(.*?),,");
-
-                    var datamatch = data.match(reg);
-
-                    console.log(datamatch[1])
-
-                    return (datamatch[1])
-                })
-
-                
-
-                let sortedArrs = hello.sort();
-                //   console.log(sortedArrs)
-        
-                let uniq = [...new Set(sortedArrs)]
-
-                console.log(uniq);
-
-                this.setState({
-                    finalName:uniq
-                })
-                
-            })
-    }
-
-
-
+   
 
     train1Status() {
         var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
@@ -138,16 +97,13 @@ class Train extends Component {
                 reasonName: "Good Service",
 
             })
-
-
         }
         else {
             var filteredLinelist = this.state.lineList.filter(line => {
                 line = line["Affects"]["0"]["VehicleJourneys"]["0"]["AffectedVehicleJourney"]["0"]["LineRef"][0]
 
-                // console.log(line)
                 return (
-                    line.slice(line.length - 1) === name
+                    line.slice(line.length - 2) === name
                 )
             })
 
@@ -182,6 +138,7 @@ class Train extends Component {
                 })
             }
         }
+
     }
 
     findStationForThisLine = () => {
@@ -230,9 +187,45 @@ class Train extends Component {
         })
 
         this.getStopfile();
+    }
+
+    getStopfile = () => {
+        API.getStopfile()
+            .then((data) => {
+
+                data = data.data;
+                console.log(data)
+
+                this.setState({
+                    stopFile: data
+                })
+
+                var hello = this.state.uniqStation.map(station => {
+                    var stop = station;
+
+                    var reg = new RegExp(stop + ",,(.*?),,");
+
+                    var datamatch = data.match(reg);
+
+                    console.log(datamatch[1])
+
+                    return (datamatch[1])
+                })
 
 
 
+                let sortedArrs = hello.sort();
+                  console.log(sortedArrs)
+
+                let uniq = [...new Set(sortedArrs)]
+
+                console.log(uniq);
+
+                this.setState({
+                    finalName: uniq
+                })
+
+            })
     }
 
     logo = (statusWord) => {
@@ -254,8 +247,6 @@ class Train extends Component {
     }
 
     render() {
-
-        console.log(this.state.station)
         return (
             <div className="titleStripe">
 
@@ -265,7 +256,6 @@ class Train extends Component {
                     subDate={this.state.subDate}
                     longDescription={this.state.longDescription}
                     statusImgsrc={this.logo(this.state.reasonName)}
-                    station={this.state.station}
                 />
 
                 {
@@ -278,7 +268,6 @@ class Train extends Component {
                     ))
                 }
 
-
             </div>
 
         );
@@ -289,4 +278,4 @@ class Train extends Component {
 
 
 
-export default Train;
+export default TrainNQRW;

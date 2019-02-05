@@ -12,6 +12,7 @@ const Station = (props) => {return (
         <tbody>
             <tr>
                 <td>
+               
                 {props.whatname}
                 </td>
                

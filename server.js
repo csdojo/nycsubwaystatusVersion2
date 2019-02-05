@@ -20,6 +20,8 @@ if (process.env.NODE_ENV === "production") {
 
 } 
 
+// GET FEED of Line 123456s
+
 app.get("/api/stationdata", function(req,res) {
     var requestSettings = {
         method: 'GET',
@@ -42,7 +44,203 @@ app.get("/api/stationdata", function(req,res) {
         }
       });
   });
+  
+  // get feed of line SIR
 
+  app.get("/api/stationdataSIR", function(req,res) {
+    var requestSettings = {
+        method: 'GET',
+        url: 'http://datamine.mta.info/mta_esi.php?key=fa66ddb413e7c2536fabff2a1c8878bb&feed_id=11',
+        encoding: null
+      };
+      request(requestSettings, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+
+          var stationList = [];
+          var feed = GtfsRealtimeBindings.FeedMessage.decode(body);
+          feed.entity.forEach(function(entity) {
+            if (entity.trip_update) {
+
+              stationList.push(entity.trip_update);
+
+            }
+          });
+          res.send(stationList);
+        }
+      });
+  });
+
+// GET FEED of Line ACE
+
+app.get("/api/stationdataACE", function(req,res) {
+  var requestSettings = {
+      method: 'GET',
+      url: 'http://datamine.mta.info/mta_esi.php?key=fa66ddb413e7c2536fabff2a1c8878bb&feed_id=26',
+      encoding: null
+    };
+    request(requestSettings, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+
+        var stationList = [];
+        var feed = GtfsRealtimeBindings.FeedMessage.decode(body);
+        feed.entity.forEach(function(entity) {
+          if (entity.trip_update) {
+
+            stationList.push(entity.trip_update);
+
+          }
+        });
+        res.send(stationList);
+      }
+    });
+});
+
+//GET FEED of Line NQRW
+
+app.get("/api/stationdataNQRW", function(req,res) {
+  var requestSettings = {
+      method: 'GET',
+      url: 'http://datamine.mta.info/mta_esi.php?key=fa66ddb413e7c2536fabff2a1c8878bb&feed_id=16',
+      encoding: null
+    };
+    request(requestSettings, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+
+        var stationList = [];
+        var feed = GtfsRealtimeBindings.FeedMessage.decode(body);
+        feed.entity.forEach(function(entity) {
+          if (entity.trip_update) {
+
+            stationList.push(entity.trip_update);
+
+          }
+        });
+        res.send(stationList);
+      }
+    });
+});
+// GET FEED of Line BDFM
+app.get("/api/stationdataBDFM", function(req,res) {
+  var requestSettings = {
+      method: 'GET',
+      url: 'http://datamine.mta.info/mta_esi.php?key=fa66ddb413e7c2536fabff2a1c8878bb&feed_id=21',
+      encoding: null
+    };
+    request(requestSettings, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+
+        var stationList = [];
+        var feed = GtfsRealtimeBindings.FeedMessage.decode(body);
+        feed.entity.forEach(function(entity) {
+          if (entity.trip_update) {
+
+            stationList.push(entity.trip_update);
+
+          }
+        });
+        res.send(stationList);
+      }
+    });
+});
+
+//GET FEED of Line L
+app.get("/api/stationdataL", function(req,res) {
+  var requestSettings = {
+      method: 'GET',
+      url: 'http://datamine.mta.info/mta_esi.php?key=fa66ddb413e7c2536fabff2a1c8878bb&feed_id=2',
+      encoding: null
+    };
+    request(requestSettings, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+
+        var stationList = [];
+        var feed = GtfsRealtimeBindings.FeedMessage.decode(body);
+        feed.entity.forEach(function(entity) {
+          if (entity.trip_update) {
+
+            stationList.push(entity.trip_update);
+
+          }
+        });
+        res.send(stationList);
+      }
+    });
+});
+
+//GET FEED of Line G
+app.get("/api/stationdataG", function(req,res) {
+  var requestSettings = {
+      method: 'GET',
+      url: 'http://datamine.mta.info/mta_esi.php?key=fa66ddb413e7c2536fabff2a1c8878bb&feed_id=31',
+      encoding: null
+    };
+    request(requestSettings, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+
+        var stationList = [];
+        var feed = GtfsRealtimeBindings.FeedMessage.decode(body);
+        feed.entity.forEach(function(entity) {
+          if (entity.trip_update) {
+
+            stationList.push(entity.trip_update);
+
+          }
+        });
+        res.send(stationList);
+      }
+    });
+});
+
+// Get Feed of Line JZ
+app.get("/api/stationdataJZ", function(req,res) {
+  var requestSettings = {
+      method: 'GET',
+      url: 'http://datamine.mta.info/mta_esi.php?key=fa66ddb413e7c2536fabff2a1c8878bb&feed_id=36',
+      encoding: null
+    };
+    request(requestSettings, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+
+        var stationList = [];
+        var feed = GtfsRealtimeBindings.FeedMessage.decode(body);
+        feed.entity.forEach(function(entity) {
+          if (entity.trip_update) {
+
+            stationList.push(entity.trip_update);
+
+          }
+        });
+        res.send(stationList);
+      }
+    });
+});
+
+// GET Feed of line 7
+
+app.get("/api/stationdata7", function(req,res) {
+  var requestSettings = {
+      method: 'GET',
+      url: 'http://datamine.mta.info/mta_esi.php?key=fa66ddb413e7c2536fabff2a1c8878bb&feed_id=51',
+      encoding: null
+    };
+    request(requestSettings, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+
+        var stationList = [];
+        var feed = GtfsRealtimeBindings.FeedMessage.decode(body);
+        feed.entity.forEach(function(entity) {
+          if (entity.trip_update) {
+
+            stationList.push(entity.trip_update);
+
+          }
+        });
+        res.send(stationList);
+      }
+    });
+});
+
+//GET local stops txt file 
   app.get("/api/stopFile", function(req,res) {
     res.sendFile(path.join(__dirname, "./stops.txt"));
   });

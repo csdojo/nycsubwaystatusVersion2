@@ -1,0 +1,40 @@
+
+.circle1{
+    position: relative;
+    top: 195px;
+    left: 25px;
+    width: 250px;
+    height: 250px;
+    display: block;
+    -moz-border-radius: 125px;
+    -webkit-border-radius: 125px;
+    border-radius: 125px;
+    font-size: 150px;
+    color: #fff;
+    font-family: Helvetica,Sans-Serif;
+    font-weight: bold;
+    line-height: 250px;
+    text-align: center;
+
+}
+
+.top-buffer {
+    margin-top: 230px;
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.descriptionRow{
+    margin-top:40px;
+    font-size: 18px;
+    /* position: relative; */
+    background-color: #41abe1;
+    color: #fff;
+    height:auto;
+    overflow-x: hidden
+    /* min-height:0; */
+}
+

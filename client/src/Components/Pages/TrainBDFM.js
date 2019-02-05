@@ -7,7 +7,7 @@ import Station from "./Station";
 
 var parseString = xml2js.parseString;
 
-class Train extends Component {
+class TrainBDFM extends Component {
 
     constructor(props) {
         super(props);
@@ -45,7 +45,7 @@ class Train extends Component {
     }
 
     getStationData = () => {
-        API.getStationData()
+        API.getStationDataBDFM()
             .then((data) => {
                 console.log(data.data);
                 this.setState({
@@ -74,7 +74,7 @@ class Train extends Component {
 
                     var datamatch = data.match(reg);
 
-                    console.log(datamatch[1])
+                    // console.log(datamatch[1])
 
                     return (datamatch[1])
                 })
@@ -86,7 +86,7 @@ class Train extends Component {
         
                 let uniq = [...new Set(sortedArrs)]
 
-                console.log(uniq);
+                // console.log(uniq);
 
                 this.setState({
                     finalName:uniq
@@ -223,7 +223,7 @@ class Train extends Component {
 
         let uniq = [...new Set(sortedArrs)]
 
-        //   console.log(uniq)
+          console.log(uniq)
         this.setState({
             station: eachstop,
             uniqStation: uniq
@@ -255,7 +255,6 @@ class Train extends Component {
 
     render() {
 
-        console.log(this.state.station)
         return (
             <div className="titleStripe">
 
@@ -289,4 +288,4 @@ class Train extends Component {
 
 
 
-export default Train;
+export default TrainBDFM;
