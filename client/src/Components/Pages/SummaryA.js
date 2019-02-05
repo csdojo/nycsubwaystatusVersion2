@@ -26,10 +26,10 @@ class SummaryA extends Component {
 }
 
   corsPolicy() {
-    var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    // var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
     var targetUrl = 'http://web.mta.info/status/serviceStatus.txt'
     const that = this;
-    fetch(proxyUrl+targetUrl, {
+    fetch(targetUrl, {
 
       headers: {
         origin: 'http://web.mta.info/status'
