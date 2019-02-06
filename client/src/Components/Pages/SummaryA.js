@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import xml2js from 'xml2js';
 import Summary from './Summary';
-import Train from "./Train";
+import API from "../../Utils/API";
 import "./style.css";
 
 var parseString = xml2js.parseString;
@@ -17,15 +17,25 @@ class SummaryA extends Component {
       matches: []
 
     };
-    this.corsPolicy = this.corsPolicy.bind(this);
+    this.summaryStatus = this.summaryStatus.bind(this);
     this.logo = this.logo.bind(this);
   }
 
   componentDidMount() {
-   this.corsPolicy()
+   this.summaryStatus()
 }
 
-  corsPolicy() {
+// summaryStatus = () => {
+//   API.getStatusSummary()
+//       .then((data) => {
+//           console.log(data);
+          
+//       }).then(() => {
+//           // this.findStationForThisLine();
+//       })
+// }
+
+  summaryStatus() {
     // var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
     var targetUrl = 'http://web.mta.info/status/serviceStatus.txt'
     const that = this;
@@ -34,7 +44,7 @@ class SummaryA extends Component {
       headers: {
         origin: 'http://web.mta.info/status'
       }
-    })
+    },{mode: 'cors'})
       .then(response => response.text())
       .then(data => {
 

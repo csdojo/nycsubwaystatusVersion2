@@ -30,7 +30,7 @@ class Train extends Component {
             stopFile: "",
             finalName:[]
         };
-        this.train1Status = this.train1Status.bind(this);
+        this.getStatusDetail = this.getStatusDetail.bind(this);
 
     }
 
@@ -38,7 +38,7 @@ class Train extends Component {
         var url = window.location.href;
         var lineName = url[url.length - 1];
         this.setState({ lineName: lineName });
-        this.train1Status();
+        this.getStatusDetail();
         this.getStationData();
        
 
@@ -47,7 +47,7 @@ class Train extends Component {
     getStationData = () => {
         API.getStationData()
             .then((data) => {
-                console.log(data.data);
+                // console.log(data.data);
                 this.setState({
                     allRouteID: data.data
                 })
@@ -61,7 +61,7 @@ class Train extends Component {
             .then((data) => {
 
                 data = data.data;
-                console.log(data)
+                // console.log(data)
 
                 this.setState({
                     stopFile: data
@@ -74,7 +74,7 @@ class Train extends Component {
 
                     var datamatch = data.match(reg);
 
-                    console.log(datamatch[1])
+                    // console.log(datamatch[1])
 
                     return (datamatch[1])
                 })
@@ -86,7 +86,7 @@ class Train extends Component {
         
                 let uniq = [...new Set(sortedArrs)]
 
-                console.log(uniq);
+                // console.log(uniq);
 
                 this.setState({
                     finalName:uniq
@@ -95,19 +95,34 @@ class Train extends Component {
             })
     }
 
+    // getStatusDetail = () =>{
+    //     API.getStatusDetail()
+    //         .then((data) => {
+    //             // var longtime = data["Siri"]["ServiceDelivery"]["0"]["ResponseTimestamp"][0];
+
+    //             // var date = longtime.substr(0, longtime.indexOf('T'));
+
+    //             console.log(data);
+    //             console.log(data.data);
+               
+    //         }).then(() => {
+    //             console.log("what")
+    //         })
+    // }
 
 
-
-    train1Status() {
-        var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    getStatusDetail() {
+        // var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
         var targetUrl = 'http://web.mta.info/status/ServiceStatusSubway.xml'
         const that = this;
-        fetch(proxyUrl+targetUrl)
+        fetch(targetUrl)
             .then(response => response.text())
             .then(data => {
-
+                
 
                 parseString(data, function (err, result) {
+
+                    // console.log(result)
                     var longtime = result["Siri"]["ServiceDelivery"]["0"]["ResponseTimestamp"][0];
 
                     var date = longtime.substr(0, longtime.indexOf('T'));
@@ -194,19 +209,19 @@ class Train extends Component {
                 line === name
             )
         })
-        console.log(findRouteId)
+        // console.log(findRouteId)
         var stopList = findRouteId.map(stop => {
             return (
                 stop["stop_time_update"]
             )
         })
-        console.log(stopList)
+        // console.log(stopList)
         var eachstop = stopList.map(stop => {
 
             console.log(stop)
             var eachEachStop = stop.map(stop2 => {
 
-                console.log(stop2)
+                // console.log(stop2)
                 return (
                     stop2["stop_id"]
                 )
@@ -231,8 +246,6 @@ class Train extends Component {
 
         this.getStopfile();
 
-
-
     }
 
     logo = (statusWord) => {
@@ -255,7 +268,7 @@ class Train extends Component {
 
     render() {
 
-        console.log(this.state.station)
+        // console.log(this.state.station)
         return (
             <div className="titleStripe">
 

@@ -47,7 +47,7 @@ class TrainBDFM extends Component {
     getStationData = () => {
         API.getStationDataBDFM()
             .then((data) => {
-                console.log(data.data);
+                // console.log(data.data);
                 this.setState({
                     allRouteID: data.data
                 })
@@ -61,7 +61,7 @@ class TrainBDFM extends Component {
             .then((data) => {
 
                 data = data.data;
-                console.log(data)
+                // console.log(data)
 
                 this.setState({
                     stopFile: data
@@ -99,10 +99,10 @@ class TrainBDFM extends Component {
 
 
     train1Status() {
-        var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+        // var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
         var targetUrl = 'http://web.mta.info/status/ServiceStatusSubway.xml'
         const that = this;
-        fetch(proxyUrl+targetUrl)
+        fetch(targetUrl)
             .then(response => response.text())
             .then(data => {
 
@@ -194,19 +194,19 @@ class TrainBDFM extends Component {
                 line === name
             )
         })
-        console.log(findRouteId)
+        // console.log(findRouteId)
         var stopList = findRouteId.map(stop => {
             return (
                 stop["stop_time_update"]
             )
         })
-        console.log(stopList)
+        // console.log(stopList)
         var eachstop = stopList.map(stop => {
 
-            console.log(stop)
+            // console.log(stop)
             var eachEachStop = stop.map(stop2 => {
 
-                console.log(stop2)
+                // console.log(stop2)
                 return (
                     stop2["stop_id"]
                 )
@@ -223,7 +223,7 @@ class TrainBDFM extends Component {
 
         let uniq = [...new Set(sortedArrs)]
 
-          console.log(uniq)
+        //   console.log(uniq)
         this.setState({
             station: eachstop,
             uniqStation: uniq

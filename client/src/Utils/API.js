@@ -44,7 +44,16 @@ export default {
   getStationData7: function() {
     return axios.get(`/api/stationdata7`);
   },
+
+  getStatusDetail: function() {
+    return axios.get(`/api/statusdetail`);
+  },
+
   
+  getStatusSummary: function() {
+    return axios.get(`/api/statussummary`);
+  },
+
   getStopfile: function(){
     return axios.get(`/api/stopFile`);
   }

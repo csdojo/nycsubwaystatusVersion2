@@ -4,7 +4,10 @@ const path = require('path');
 // const mongoose = require('mongoose');
 // const routes = require('./routes');
 const GtfsRealtimeBindings = require('gtfs-realtime-bindings');
+const xml2js = require('xml2js');
 const request = require('request');
+
+
 const PORT = process.env.PORT || 3000;
 
 // set up express server
@@ -250,6 +253,69 @@ app.get("/api/stationdata7", function(req,res) {
     res.sendFile(path.join(__dirname, "./client/public/index.html"));
     
   });
+
+// get summary file 
+app.get("/api/statusdetail", function(req,res) {
+  var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+  var targetUrl = 'http://web.mta.info/status/ServiceStatusSubway.xml'
+  fetch(proxyUrl+targetUrl)
+      .then(response => response.text())
+      .then(data => {
+          
+
+          parseString(data, function (err, result) {
+
+              console.log(result)
+              // var longtime = result["Siri"]["ServiceDelivery"]["0"]["ResponseTimestamp"][0];
+
+              // var date = longtime.substr(0, longtime.indexOf('T'));
+
+
+              // that.setState({
+              //     lineList: result["Siri"]["ServiceDelivery"]["0"]["SituationExchangeDelivery"]["0"]["Situations"]["0"]["PtSituationElement"],
+              //     allGoodlist: result["Siri"]["ServiceDelivery"]["0"]["SituationExchangeDelivery"]["0"]["Situations"]["0"],
+              //     subDate: date
+              // })
+              // that.findMatch();
+              res.send(result)
+          });
+
+      })
+      .catch(e => {
+          console.log(e);
+          return e;
+      })
+})
+
+//GET summary status of all lines
+app.get("/api/statussummary", function(req,res) {
+
+  res.sendFile(path.join(__dirname, "http://web.mta.info/status/serviceStatus.txt"));
+  // var targetUrl = 'http://web.mta.info/status/serviceStatus.txt'
+
+  // fetch(targetUrl, {
+
+  //   headers: {
+  //     origin: 'http://web.mta.info/status'
+  //   }
+  // })
+  //   .then(response => response.text())
+  //   .then(data => {
+
+  //     parseString(data, function (err, result) {
+
+  //       res.send(result)
+  //     });
+
+  //   })
+  //   .catch(e => {
+  //     console.log(e);
+  //     return e;
+  //   })
+
+})
+
+
 // set up a wildcard route just in case all of the other routes fail
 
 

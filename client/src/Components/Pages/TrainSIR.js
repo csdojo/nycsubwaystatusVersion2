@@ -44,7 +44,7 @@ class TrainSIR extends Component {
     getStationData = () => {
         API.getStationDataSIR()
             .then((data) => {
-                console.log(data.data);
+                // console.log(data.data);
                 this.setState({
                     allRouteID: data.data
                 })
@@ -70,7 +70,7 @@ class TrainSIR extends Component {
 
                     var datamatch = data.match(reg);
 
-                    console.log(datamatch)
+                    // console.log(datamatch)
 
                     return (datamatch[1])
                 })
@@ -90,10 +90,10 @@ class TrainSIR extends Component {
     }
 
     train1Status() {
-        var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+        // var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
         var targetUrl = 'http://web.mta.info/status/ServiceStatusSubway.xml'
         const that = this;
-        fetch(proxyUrl+targetUrl)
+        fetch(targetUrl)
             .then(response => response.text())
             .then(data => {
 

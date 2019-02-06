@@ -44,7 +44,7 @@ class TrainM extends Component {
     getStationData = () => {
         API.getStationDataBDFM()
             .then((data) => {
-                console.log(data.data);
+                // console.log(data.data);
                 this.setState({
                     allRouteID: data.data
                 })
@@ -66,15 +66,15 @@ class TrainM extends Component {
                 var hello = this.state.uniqStation.map(station => {
                     var stop = station;
 
-                    console.log(stop)
+                    // console.log(stop)
 
                     var reg = new RegExp(stop + ",,(.*?),,");
-                    console.log(reg)
+                    // console.log(reg)
                     var datamatch = data.match(reg);
-                    console.log(datamatch)
-                    console.log(datamatch[0])
-                    console.log(datamatch[1])
-                    let okayDatamatch = datamatch[0]
+                    // console.log(datamatch)
+                    // console.log(datamatch[0])
+                    // console.log(datamatch[1])
+                    let okayDatamatch = datamatch[1]
                     return (okayDatamatch)
                    
                 })
@@ -83,9 +83,9 @@ class TrainM extends Component {
 
                 let sortedArrs = hello.sort();
 
-                console.log(sortedArrs)
+                // console.log(sortedArrs)
                 let uniq = [...new Set(sortedArrs)]
-                console.log(uniq)
+                // console.log(uniq)
                 this.setState({
                     finalName: uniq
                 })
@@ -94,10 +94,10 @@ class TrainM extends Component {
     }
 
     train1Status() {
-        var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+        // var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
         var targetUrl = 'http://web.mta.info/status/ServiceStatusSubway.xml'
         const that = this;
-        fetch(proxyUrl+targetUrl)
+        fetch(targetUrl)
             .then(response => response.text())
             .then(data => {
 

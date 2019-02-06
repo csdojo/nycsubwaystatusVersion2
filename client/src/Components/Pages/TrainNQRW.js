@@ -46,7 +46,7 @@ class TrainNQRW extends Component {
     getStationData = () => {
         API.getStationDataNQRW()
             .then((data) => {
-                console.log(data.data);
+                // console.log(data.data);
                 this.setState({
                     allRouteID: data.data
                 })
@@ -58,10 +58,10 @@ class TrainNQRW extends Component {
    
 
     train1Status() {
-        var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+        // var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
         var targetUrl = 'http://web.mta.info/status/ServiceStatusSubway.xml'
         const that = this;
-        fetch(proxyUrl+targetUrl)
+        fetch(targetUrl)
             .then(response => response.text())
             .then(data => {
 
@@ -151,19 +151,19 @@ class TrainNQRW extends Component {
                 line === name
             )
         })
-        console.log(findRouteId)
+        // console.log(findRouteId)
         var stopList = findRouteId.map(stop => {
             return (
                 stop["stop_time_update"]
             )
         })
-        console.log(stopList)
+        // console.log(stopList)
         var eachstop = stopList.map(stop => {
 
-            console.log(stop)
+            // console.log(stop)
             var eachEachStop = stop.map(stop2 => {
 
-                console.log(stop2)
+                // console.log(stop2)
                 return (
                     stop2["stop_id"]
                 )
@@ -194,7 +194,7 @@ class TrainNQRW extends Component {
             .then((data) => {
 
                 data = data.data;
-                console.log(data)
+                // console.log(data)
 
                 this.setState({
                     stopFile: data
@@ -207,7 +207,7 @@ class TrainNQRW extends Component {
 
                     var datamatch = data.match(reg);
 
-                    console.log(datamatch[1])
+                    // console.log(datamatch[1])
 
                     return (datamatch[1])
                 })
@@ -215,11 +215,11 @@ class TrainNQRW extends Component {
 
 
                 let sortedArrs = hello.sort();
-                  console.log(sortedArrs)
+                //   console.log(sortedArrs)
 
                 let uniq = [...new Set(sortedArrs)]
 
-                console.log(uniq);
+                // console.log(uniq);
 
                 this.setState({
                     finalName: uniq
