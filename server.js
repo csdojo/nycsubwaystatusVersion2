@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === "production") {
 app.get("/api/stationdata", function(req,res) {
     var requestSettings = {
         method: 'GET',
-        url: 'http://datamine.mta.info/mta_esi.php?key=fa66ddb413e7c2536fabff2a1c8878bb&feed_id=1',
+        url: 'http://datamine.mta.info/mta_esi.php?key=5a1f9f21265ac1a0338e43fdcfd6321f&feed_id=1',
         encoding: null
       };
       request(requestSettings, function (error, response, body) {
@@ -53,7 +53,7 @@ app.get("/api/stationdata", function(req,res) {
   app.get("/api/stationdataSIR", function(req,res) {
     var requestSettings = {
         method: 'GET',
-        url: 'http://datamine.mta.info/mta_esi.php?key=fa66ddb413e7c2536fabff2a1c8878bb&feed_id=11',
+        url: 'http://datamine.mta.info/mta_esi.php?key=5a1f9f21265ac1a0338e43fdcfd6321f&feed_id=11',
         encoding: null
       };
       request(requestSettings, function (error, response, body) {
@@ -78,7 +78,7 @@ app.get("/api/stationdata", function(req,res) {
 app.get("/api/stationdataACE", function(req,res) {
   var requestSettings = {
       method: 'GET',
-      url: 'http://datamine.mta.info/mta_esi.php?key=fa66ddb413e7c2536fabff2a1c8878bb&feed_id=26',
+      url: 'http://datamine.mta.info/mta_esi.php?key=5a1f9f21265ac1a0338e43fdcfd6321f&feed_id=26',
       encoding: null
     };
     request(requestSettings, function (error, response, body) {
@@ -103,7 +103,7 @@ app.get("/api/stationdataACE", function(req,res) {
 app.get("/api/stationdataNQRW", function(req,res) {
   var requestSettings = {
       method: 'GET',
-      url: 'http://datamine.mta.info/mta_esi.php?key=fa66ddb413e7c2536fabff2a1c8878bb&feed_id=16',
+      url: 'http://datamine.mta.info/mta_esi.php?key=5a1f9f21265ac1a0338e43fdcfd6321f&feed_id=16',
       encoding: null
     };
     request(requestSettings, function (error, response, body) {
@@ -126,7 +126,7 @@ app.get("/api/stationdataNQRW", function(req,res) {
 app.get("/api/stationdataBDFM", function(req,res) {
   var requestSettings = {
       method: 'GET',
-      url: 'http://datamine.mta.info/mta_esi.php?key=fa66ddb413e7c2536fabff2a1c8878bb&feed_id=21',
+      url: 'http://datamine.mta.info/mta_esi.php?key=5a1f9f21265ac1a0338e43fdcfd6321f&feed_id=21',
       encoding: null
     };
     request(requestSettings, function (error, response, body) {
@@ -150,7 +150,7 @@ app.get("/api/stationdataBDFM", function(req,res) {
 app.get("/api/stationdataL", function(req,res) {
   var requestSettings = {
       method: 'GET',
-      url: 'http://datamine.mta.info/mta_esi.php?key=fa66ddb413e7c2536fabff2a1c8878bb&feed_id=2',
+      url: 'http://datamine.mta.info/mta_esi.php?key=5a1f9f21265ac1a0338e43fdcfd6321f&feed_id=2',
       encoding: null
     };
     request(requestSettings, function (error, response, body) {
@@ -174,7 +174,7 @@ app.get("/api/stationdataL", function(req,res) {
 app.get("/api/stationdataG", function(req,res) {
   var requestSettings = {
       method: 'GET',
-      url: 'http://datamine.mta.info/mta_esi.php?key=fa66ddb413e7c2536fabff2a1c8878bb&feed_id=31',
+      url: 'http://datamine.mta.info/mta_esi.php?key=5a1f9f21265ac1a0338e43fdcfd6321f&feed_id=31',
       encoding: null
     };
     request(requestSettings, function (error, response, body) {
@@ -198,7 +198,7 @@ app.get("/api/stationdataG", function(req,res) {
 app.get("/api/stationdataJZ", function(req,res) {
   var requestSettings = {
       method: 'GET',
-      url: 'http://datamine.mta.info/mta_esi.php?key=fa66ddb413e7c2536fabff2a1c8878bb&feed_id=36',
+      url: 'http://datamine.mta.info/mta_esi.php?key=5a1f9f21265ac1a0338e43fdcfd6321f&feed_id=36',
       encoding: null
     };
     request(requestSettings, function (error, response, body) {
@@ -223,7 +223,7 @@ app.get("/api/stationdataJZ", function(req,res) {
 app.get("/api/stationdata7", function(req,res) {
   var requestSettings = {
       method: 'GET',
-      url: 'http://datamine.mta.info/mta_esi.php?key=fa66ddb413e7c2536fabff2a1c8878bb&feed_id=51',
+      url: 'http://datamine.mta.info/mta_esi.php?key=5a1f9f21265ac1a0338e43fdcfd6321f&feed_id=51',
       encoding: null
     };
     request(requestSettings, function (error, response, body) {
