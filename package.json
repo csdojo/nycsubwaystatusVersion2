@@ -29,6 +29,7 @@
   "homepage": "https://github.com/csdojo/nycsubwaystatusVersion2#readme",
   "dependencies": {
     "connect": "^3.6.6",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "gtfs-realtime-bindings": "0.0.4",
     "if-env": "^1.0.4",

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import xml2js from 'xml2js';
 import Summary from './Summary';
+import cors from "cors";
 import API from "../../Utils/API";
 import "./style.css";
 
@@ -22,34 +23,41 @@ class SummaryA extends Component {
   }
 
   componentDidMount() {
-   this.summaryStatus()
-}
+    this.summaryStatus()
+  }
 
-// summaryStatus = () => {
-//   API.getStatusSummary()
-//       .then((data) => {
-//           console.log(data);
-          
-//       }).then(() => {
-//           // this.findStationForThisLine();
-//       })
-// }
+  // summaryStatus = () => {
+  //   API.getStatusSummary()
+  //       .then((data) => {
+  //           console.log(data);
+
+  //       }).then(() => {
+  //           // this.findStationForThisLine();
+  //       })
+  // }
 
   summaryStatus() {
+
+    // const proxyEndpoint = 'https://free-cors-proxy.herokuapp.com/';
+    // const proxyUrl = url => `${proxyEndpoint}${encodeURIComponent(url)}`;
+
+    // let exampleAPI = 'http://web.mta.info/status/serviceStatus.txt';
+    // let url = proxyUrl(exampleAPI);
+
     var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
     var targetUrl = 'http://web.mta.info/status/serviceStatus.txt'
     const that = this;
     fetch(proxyUrl+targetUrl, {
 
-      headers: {
-        origin: 'http://web.mta.info/status'
-      }
-    },{mode: 'cors'})
+      // headers: {
+      //   origin: 'http://web.mta.info/status'
+      // }
+    })
       .then(response => response.text())
       .then(data => {
-
+        console.log(data)
         parseString(data, function (err, result) {
-
+          console.log(result)
           that.setState({
             lineList: result["service"]["subway"][0]["line"],
 
@@ -63,7 +71,7 @@ class SummaryA extends Component {
       })
   }
 
- 
+
 
   logo = (statusWord) => {
 
@@ -155,7 +163,7 @@ class SummaryA extends Component {
   //     return (this.props)
   //   }
   // }
-  
+
 
   render() {
 
@@ -176,7 +184,7 @@ class SummaryA extends Component {
                 backgroundcolor={this.lineColor(line["name"][0])}
                 findMatch={this.findMatch}
                 matches={this.state.matches}
-                // findW = {this.findW}
+              // findW = {this.findW}
               />
 
 
