@@ -3,9 +3,9 @@
 []()
 
 ## Packages used
-> [Cors](https://www.npmjs.com/package/cors)
-> [Express]()
-> [gtfs-realtime-bindings](https://developers.google.com/transit/gtfs-realtime/)
-> [mongoose](https://mongoosejs.com/)
-> [xml2js](https://www.npmjs.com/search?q=xml2js)
+* [Cors](https://www.npmjs.com/package/cors)
+* [Express]()
+* [gtfs-realtime-bindings](https://developers.google.com/transit/gtfs-realtime/)
+* [mongoose](https://mongoosejs.com/)
+* [xml2js](https://www.npmjs.com/search?q=xml2js)
 
