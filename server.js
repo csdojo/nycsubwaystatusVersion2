@@ -1,7 +1,7 @@
 // import dependencies
 const express = require('express');
 const path = require('path');
-const cors = require("cors")
+const cors = require("cors");
 // const mongoose = require('mongoose');
 // const routes = require('./routes');
 const GtfsRealtimeBindings = require('gtfs-realtime-bindings');
@@ -12,12 +12,10 @@ const request = require('request');
 // set up express server
 const app = express();
 
-app.use(cors("http://web.mta.info/status/ServiceStatusSubway.xml"));
+app.use(cors());
 
 
 const PORT = process.env.PORT || 3000;
-
-
 
 
 // set up express middleware
@@ -29,6 +27,28 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 
 } 
+
+// summary status 
+
+app.get("/api/statussummary", function(req,res) {
+  request('http://web.mta.info/status/serviceStatus.txt', function (error, response, body) {
+    console.log('error:', error); // Print the error if one occurred
+    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+    console.log('body:', body); // Print the HTML for the Google homepage.
+  res.send(body)
+  });
+})
+
+// status detail
+app.get("/api/statusdetail", function(req,res) {
+  request('http://web.mta.info/status/ServiceStatusSubway.xml', function (error, response, body) {
+    console.log('error:', error); // Print the error if one occurred
+    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+    console.log('body:', body); // Print the HTML for the Google homepage.
+  res.send(body)
+  });
+
+})
 
 // GET FEED of Line 123456s
 
@@ -261,66 +281,7 @@ app.get("/api/stationdata7", function(req,res) {
     
   });
 
-// get summary file 
-app.get("/api/statusdetail", function(req,res) {
-  var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-  var targetUrl = 'http://web.mta.info/status/ServiceStatusSubway.xml'
-  fetch(proxyUrl+targetUrl)
-      .then(response => response.text())
-      .then(data => {
-          
 
-          parseString(data, function (err, result) {
-
-              console.log(result)
-              // var longtime = result["Siri"]["ServiceDelivery"]["0"]["ResponseTimestamp"][0];
-
-              // var date = longtime.substr(0, longtime.indexOf('T'));
-
-
-              // that.setState({
-              //     lineList: result["Siri"]["ServiceDelivery"]["0"]["SituationExchangeDelivery"]["0"]["Situations"]["0"]["PtSituationElement"],
-              //     allGoodlist: result["Siri"]["ServiceDelivery"]["0"]["SituationExchangeDelivery"]["0"]["Situations"]["0"],
-              //     subDate: date
-              // })
-              // that.findMatch();
-              res.send(result)
-          });
-
-      })
-      .catch(e => {
-          console.log(e);
-          return e;
-      })
-})
-
-//GET summary status of all lines
-app.get("/api/statussummary", function(req,res) {
-
-  res.sendFile(path.join(__dirname, "http://web.mta.info/status/serviceStatus.txt"));
-  // var targetUrl = 'http://web.mta.info/status/serviceStatus.txt'
-
-  // fetch(targetUrl, {
-
-  //   headers: {
-  //     origin: 'http://web.mta.info/status'
-  //   }
-  // })
-  //   .then(response => response.text())
-  //   .then(data => {
-
-  //     parseString(data, function (err, result) {
-
-  //       res.send(result)
-  //     });
-
-  //   })
-  //   .catch(e => {
-  //     console.log(e);
-  //     return e;
-  //   })
-
-})
 
 
 // set up a wildcard route just in case all of the other routes fail

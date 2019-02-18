@@ -31,7 +31,7 @@ class Train7 extends Component {
             stopFile: "",
             finalName: []
         };
-        this.train1Status = this.train1Status.bind(this);
+        this.getStatusDetail = this.getStatusDetail.bind(this);
 
     }
 
@@ -39,7 +39,7 @@ class Train7 extends Component {
         var url = window.location.href;
         var lineName = url[url.length - 1];
         this.setState({ lineName: lineName });
-        this.train1Status();
+        this.getStatusDetail();
         this.getStationData()
     }
 
@@ -94,35 +94,34 @@ class Train7 extends Component {
             })
     }
 
-    train1Status() {
-        var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-        var targetUrl = 'http://web.mta.info/status/ServiceStatusSubway.xml'
+
+      getStatusDetail = () => {
         const that = this;
-        fetch(proxyUrl+targetUrl)
-            .then(response => response.text())
-            .then(data => {
+        API.getStatusDetail()
+          .then((data) => {
+            console.log(data);
+            var src = data.data
+            parseString(src, function (err, result) {
+       
+               var longtime = result["Siri"]["ServiceDelivery"]["0"]["ResponseTimestamp"][0];
+
+            var date = longtime.substr(0, longtime.indexOf('T'));
 
 
-                parseString(data, function (err, result) {
-                    var longtime = result["Siri"]["ServiceDelivery"]["0"]["ResponseTimestamp"][0];
-
-                    var date = longtime.substr(0, longtime.indexOf('T'));
-
-
-                    that.setState({
-                        lineList: result["Siri"]["ServiceDelivery"]["0"]["SituationExchangeDelivery"]["0"]["Situations"]["0"]["PtSituationElement"],
-                        allGoodlist: result["Siri"]["ServiceDelivery"]["0"]["SituationExchangeDelivery"]["0"]["Situations"]["0"],
-                        subDate: date
-                    })
-                    that.findMatch();
-                });
-
+            that.setState({
+                lineList: result["Siri"]["ServiceDelivery"]["0"]["SituationExchangeDelivery"]["0"]["Situations"]["0"]["PtSituationElement"],
+                allGoodlist: result["Siri"]["ServiceDelivery"]["0"]["SituationExchangeDelivery"]["0"]["Situations"]["0"],
+                subDate: date
             })
-            .catch(e => {
+            that.findMatch();
+            })
+            
+          })
+          .catch(e => {
                 console.log(e);
                 return e;
             })
-    }
+      }
 
 
     findMatch = () => {

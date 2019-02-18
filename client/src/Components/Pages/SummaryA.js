@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import xml2js from 'xml2js';
 import Summary from './Summary';
-import cors from "cors";
+import { Helmet } from "react-helmet";
 import API from "../../Utils/API";
+import Loading from '../../assets/loading.svg';
 import "./style.css";
 
 var parseString = xml2js.parseString;
@@ -18,13 +19,18 @@ class SummaryA extends Component {
       matches: []
 
     };
-    this.summaryStatus = this.summaryStatus.bind(this);
+    // this.summaryStatus = this.summaryStatus.bind(this);
+    this.getStatusSummary = this.getStatusSummary.bind(this);
+
     this.logo = this.logo.bind(this);
   }
 
   componentDidMount() {
-    this.summaryStatus()
+    // this.summaryStatus();
+    this.getStatusSummary()
   }
+
+
 
   // summaryStatus = () => {
   //   API.getStatusSummary()
@@ -36,40 +42,54 @@ class SummaryA extends Component {
   //       })
   // }
 
-  summaryStatus() {
 
-    // const proxyEndpoint = 'https://free-cors-proxy.herokuapp.com/';
-    // const proxyUrl = url => `${proxyEndpoint}${encodeURIComponent(url)}`;
 
-    // let exampleAPI = 'http://web.mta.info/status/serviceStatus.txt';
-    // let url = proxyUrl(exampleAPI);
-
-    var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-    var targetUrl = 'http://web.mta.info/status/serviceStatus.txt'
+  getStatusSummary = () => {
     const that = this;
-    fetch(proxyUrl+targetUrl, {
-
-      // headers: {
-      //   origin: 'http://web.mta.info/status'
-      // }
-    })
-      .then(response => response.text())
-      .then(data => {
-        console.log(data)
-        parseString(data, function (err, result) {
+    API.getStatusSummary()
+      .then((data) => {
+        console.log(data.data);
+        var src = data.data
+        parseString(src, function (err, result) {
           console.log(result)
           that.setState({
-            lineList: result["service"]["subway"][0]["line"],
+            lineList: result["service"]["subway"][0]["line"]
 
           })
-        });
-
-      })
-      .catch(e => {
-        console.log(e);
-        return e;
+        })
+        
       })
   }
+
+  // summaryStatus() {
+
+
+  //   var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+  //   var targetUrl = 'http://web.mta.info/status/serviceStatus.txt';
+  //   const that = this;
+  //   fetch(proxyUrl+targetUrl, {
+
+  //     // headers: {
+  //     //   origin: 'http://web.mta.info/status'
+  //     // }
+  //   })
+  //     .then(response => response.text())
+  //     .then(data => {
+  //       console.log(data)
+  //       parseString(data, function (err, result) {
+  //         console.log(result)
+  //         that.setState({
+  //           lineList: result["service"]["subway"][0]["line"],
+
+  //         })
+  //       });
+
+  //     })
+  //     .catch(e => {
+  //       console.log(e);
+  //       return e;
+  //     })
+  // }
 
 
 
@@ -166,14 +186,18 @@ class SummaryA extends Component {
 
 
   render() {
-
+console.log(this.state.lineList)
     return (
 
       <div className="container text-center dogmatch widthBox ">
 
         <div className="container mx-auto all">
 
-          {
+
+
+          {!this.state.lineList.length ?
+            (<img src={Loading} />)
+            :
             this.state.lineList.map(line => (
               <Summary
                 name={line["name"][0]}
