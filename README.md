@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # New York City Subway Web Application
 [View App Here](https://safe-lake-78552.herokuapp.com/)
 []()
@@ -10,16 +9,3 @@
 * [mongoose](https://mongoosejs.com/)
 * [xml2js](https://www.npmjs.com/search?q=xml2js)
 
-=======
-# New York City Subway Web Application
-[View App Here](https://safe-lake-78552.herokuapp.com/)
-[]()
-
-## Packages used
-* [Cors](https://www.npmjs.com/package/cors)
-* [Express]()
-* [gtfs-realtime-bindings](https://developers.google.com/transit/gtfs-realtime/)
-* [mongoose](https://mongoosejs.com/)
-* [xml2js](https://www.npmjs.com/search?q=xml2js)
-
->>>>>>> bcca69f5c708133103fe85fd275a7dfdb2c595d2
