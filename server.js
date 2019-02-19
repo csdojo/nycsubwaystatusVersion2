@@ -1,19 +1,12 @@
 // import dependencies
 const express = require('express');
 const path = require('path');
-const cors = require("cors");
-// const mongoose = require('mongoose');
-// const routes = require('./routes');
 const GtfsRealtimeBindings = require('gtfs-realtime-bindings');
-// const xml2js = require('xml2js');
 const request = require('request');
 
 
 // set up express server
 const app = express();
-
-app.use(cors());
-
 
 const PORT = process.env.PORT || 3000;
 
